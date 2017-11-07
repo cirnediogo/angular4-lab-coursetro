@@ -1,20 +1,69 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
   <img width="300" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+  <br/><br/>
 
+
+  <h3>Inserting new components:</h3>
+
+  <app-my-new-component></app-my-new-component>
+
+
+  <h3>Interpolation:</h3>
+
+  Interpolation of a string: {{title}} 
+  <br/>
+  Interpolation of an object: {{person.name}}, {{person.location}} 
+  <br/>
+  Conditional interpolation: 
+  <span *ngIf="person.height; then heightTemplate else noHeightTemplate"></span> 
+  <ng-template #heightTemplate>{{person.height}}</ng-template>
+  <ng-template #noHeightTemplate>No height was established</ng-template>
+  <br/>
+  Interpolation of an array:
+  <ul>
+    <li *ngFor="let nums of numbers">{{nums}}</li>
+  </ul>
+
+
+  <h3>Property binding:</h3>
+
+  <span style="margin: 0 20px">By interpolation</span>
+  <span style="margin: 0 20px">By [attribute]</span>
+  <span style="margin: 0 20px">By bind-attribute</span><br/>
+  <span style="margin: 0 20px"><img src="{{angularLogo}}" height="100px"></span>
+  <span style="margin: 0 20px"><img [src]="angularLogo" height="100px"></span>
+  <span style="margin: 0 20px"><img bind-src="angularLogo" height="100px"></span>
+  <br/><br/>
+
+  <button [disabled]="btnStatus == 'disabled'">Disabled Button</button>
+
+
+  <h3>Event binding:</h3>
+
+  <button (click)="bindEvent($event)">Alert me</button>
+  <button (mouseenter)="bindEvent($event)">Enter me</button>
+
+
+  <h3>Class binding:</h3>
+
+  <span [class]="redTextClass">Red text</span><br/>
+  <span [class.red-text]="redTextClassActive">Another red text</span><br/>
+  <span [ngClass]="multipleClasses">Red and italic text</span><br/>
+  
+
+  <h3>Style binding:</h3>
+  
+    <span [style.color]="redTextStyle">Red text again</span><br/>
+    <span [style.color]="redTextStyleActive ? 'red' : 'blue'">Yet another red text</span><br/>
+    <span [ngStyle]="multipleStyles">Another red and italic text</span><br/>
+
+
+  <h3>Services:</h3>
+  
+  {{serviceLog}}
+  <br/>
+  <span *ngFor="let car of getCarsData()" style="margin: 0 15px">{{car}}</span>
+  
+
+</div>
